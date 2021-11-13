@@ -1,4 +1,4 @@
-//"Page doesn't exist" Component
+//"Page doesn't exists Component
 import { Link } from 'react-router-dom';
 
 const Page404 = () => {
