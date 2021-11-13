@@ -1,36 +1,36 @@
-import './TaskItem.sass';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
+//Task list item Component
+//Hooks
 import { useNavigate } from 'react-router-dom';
+//Styles
+import './TaskItem.sass';
 
 const TaskItem = ({ item, setTaskItemDetail }) => {
 	const { id, date, taskType, author, account, terminal, status } = item;
 
 	let navigate = useNavigate();
-	function handleClick() {
+
+	function onSeeDetails() {
 		navigate(`/tasks/${id}`);
 		setTaskItemDetail(item);
 	}
 
 	return (
-		<tr onClick={handleClick}>
-			{/* <Link className="link" to={`/tasks/${item.id}`}> */}
-			<td>
-				<div style={{ fontWeight: 'bold', flexWrap: 'wrap' }}>№{id}</div>
+		<tr onClick={onSeeDetails}>
+			<td className="cell">
+				<div className="cell-title">№{id}</div>
 				<div>{formatDate(new Date(date))}</div>
 			</td>
-			<td style={{ maxWidth: '100px' }}>
-				<div style={{ fontWeight: 'bold', flexWrap: 'wrap', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{taskType}</div>
-				<div>{author}</div>
+			<td className="cell">
+				<div className="cell-title shortened">{taskType}</div>
+				<div className="shortened">{formatAuthor(author)}</div>
 			</td>
-			<td style={{ maxWidth: '100px' }}>
-				<div style={{ fontWeight: 'bold', flexWrap: 'wrap', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{account}</div>
-				<div>{terminal}</div>
+			<td className="cell">
+				<div className="cell-title shortened">{account}</div>
+				<div className="shortened">{terminal}</div>
 			</td>
-			<td>
+			<td className="cell">
 				<div className={`status ${status}`}></div>
 			</td>
-			{/* </Link> */}
 		</tr>
 	);
 };
@@ -44,6 +44,11 @@ export const formatDate = (date) => {
 		year = date.getFullYear().toString().slice(-2);
 
 	return `${day}.${month}.${year}`;
+};
+
+const formatAuthor = (author) => {
+	const words = author.split(' ');
+	return `${words[0]} ${words[1].slice(0, 1)}. ${words[2].slice(0, 1)}.`;
 };
 
 export default TaskItem;

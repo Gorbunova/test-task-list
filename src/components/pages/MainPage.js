@@ -11,7 +11,6 @@ const MainPage = ({ setTaskItemDetail }) => {
 	const [tasksDisplayCount, setTasksDisplayCount] = useState(0);
 	//Offset pages in pagination
 	const [offset, setMainOffset] = useState(0);
-
 	return (
 		<>
 			<TasksList
@@ -20,7 +19,9 @@ const MainPage = ({ setTaskItemDetail }) => {
 				offset={offset}
 				setTaskItemDetail={setTaskItemDetail}
 			/>
-			<PaginationControl tasksTotalCount={tasksTotalCount} setTasksDisplayCount={setTasksDisplayCount} setMainOffset={setMainOffset} />
+			{tasksTotalCount === 0 ? null : (
+				<PaginationControl tasksTotalCount={tasksTotalCount} setTasksDisplayCount={setTasksDisplayCount} setMainOffset={setMainOffset} />
+			)}
 		</>
 	);
 };

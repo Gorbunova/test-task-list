@@ -1,11 +1,17 @@
-import Table from 'react-bootstrap/Table';
-import TaskItem from '../TaskItem/TaskItem';
-import useService from '../../services/Service';
+//Tasks List Component
+
+//Hooks
 import { useState, useEffect } from 'react';
+import useService from '../../services/Service';
+//Table from bootstrap-react
+import Table from 'react-bootstrap/Table';
+//Components
+import TaskItem from '../TaskItem/TaskItem';
+import LoadingMessage from '../LoadingMessage/LoadingMessage';
 
 const TasksList = (props) => {
 	const { offset, tasksDisplayCount, setTasksTotalCount, setTaskItemDetail } = props;
-	const { getAllTasks } = useService();
+	const { getAllTasks, loading } = useService();
 	const [tasks, setTasks] = useState([]);
 
 	useEffect(() => {
@@ -15,7 +21,9 @@ const TasksList = (props) => {
 		});
 	}, []);
 
-	return (
+	return loading ? (
+		<LoadingMessage />
+	) : (
 		<Table bordered hover>
 			<thead>
 				<tr>
