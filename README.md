@@ -1,4 +1,4 @@
-# Test task on React - "The list of tasks"
+# Test task on React - "Tasks list"
 
 Demo - https://alinagorbunova.ru/reacttest/
 
