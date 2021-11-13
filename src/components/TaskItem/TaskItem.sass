@@ -1,0 +1,41 @@
+.status
+    height: 30px
+    width: 100%
+    margin-top: 9px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 10px
+    padding: 10px
+    &.new
+        background-color: #8b2121fa
+        color: #fff
+        &::after
+            content: 'Новое'
+    &.completed
+        background-color: #135a13fa
+        color: #fff
+        &::after
+            content: 'Выполнено'
+    &.assigned_to
+        background-color: #af8e1ffa
+        color: #fff
+        &::after
+            content: 'Назначено'
+    &.started
+        background-color: #0f3483fa
+        color: #fff
+        &::after
+            content: 'Выполняется'
+    &.declined
+        background-color: #464444fa
+        color: #fff
+        &::after
+            content: 'Отменено'
+.link
+    display: contents
+    text-decoration: none
+    color: inherit
+    height: 100px
+.link:hover
+    color: inherit
