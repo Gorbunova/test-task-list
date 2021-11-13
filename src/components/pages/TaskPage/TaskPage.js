@@ -10,19 +10,16 @@ const TaskPage = ({ taskItemDetail }) => {
 		switch (status) {
 			case 'new':
 				return 'Новое';
-				break;
 			case 'completed':
 				return 'Выполнено';
-				break;
 			case 'assigned_to':
 				return 'Назначено';
-				break;
 			case 'started':
 				return 'Выполняется';
-				break;
 			case 'declined':
 				return 'Отменено';
-				break;
+			default:
+				return;
 		}
 	};
 
